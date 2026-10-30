@@ -1,0 +1,98 @@
+/**
+ * [통합 메인 스타일시트]
+ * 모듈화된 각 컴포넌트 CSS를 순서대로 가져와 통합합니다.
+ */
+
+/* 1. 디자인 토큰 및 변수 */
+@import url('./variables.css');
+
+/* 2. 전역 베이스 및 리셋 */
+@import url('./base.css');
+
+/* 3. 상단 네비게이션 컴포넌트 */
+@import url('./components/navbar.css');
+
+/* 4. 메인 히어로 섹션 컴포넌트 */
+@import url('./components/hero.css');
+
+/* 5. AI 피지컬 3단계 다이어그램 컴포넌트 */
+@import url('./components/diagram.css');
+
+/* 6. 강사 소개 및 관리자 인라인 에디터 컴포넌트 */
+@import url('./components/profile.css');
+
+/* 7. 작업물 갤러리 카드 컴포넌트 */
+@import url('./components/project-card.css');
+
+/* 8. 팝업 모달 컴포넌트 */
+@import url('./components/modal.css');
+
+/* ==========================================================================
+   하단 푸터 (Footer) 컴포넌트
+   ========================================================================== */
+.footer {
+  background-color: var(--text-main);
+  color: var(--text-muted);
+  padding: 60px 0 40px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: calc(15px * var(--font-scale));
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-brand {
+  color: #FFFFFF;
+  font-size: calc(18px * var(--font-scale));
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a:hover {
+  color: #FFFFFF;
+}
+
+.copyright {
+  width: 100%;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   토스트 알림 팝업 메시지 (저장 완료 / 클립보드 복사 등)
+   ========================================================================== */
+.toast-msg {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: var(--text-main);
+  color: #FFFFFF;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}

@@ -1,0 +1,167 @@
+/**
+ * [강사 소개 & 인라인 관리자 편집 모드 컴포넌트]
+ * 정연소 강사의 프로필, 소개 본문, 관심사, 핵심 스킬, 그리고 나만 편집 가능한 관리자 에디터 영역
+ */
+
+.about-section {
+  background-color: var(--bg-page);
+}
+
+.about-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+/* 관리자 모드 안내 알림 띠 (관리자 모드 활성화 시 등장) */
+.admin-mode-banner {
+  display: none;
+  background-color: #FEF3C7;
+  border: 1px solid #F59E0B;
+  color: #92400E;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(15px * var(--font-scale));
+  font-weight: 600;
+}
+
+.admin-mode-banner.active {
+  display: flex;
+}
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--bg-subtle);
+  padding-bottom: 24px;
+}
+
+.instructor-title-wrap h2 {
+  font-size: calc(30px * var(--font-scale));
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.instructor-role {
+  font-size: calc(18px * var(--font-scale));
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* 자기소개 본문 텍스트 (기본 보기 모드) */
+.about-bio-text {
+  font-size: calc(18px * var(--font-scale));
+  line-height: 1.85;
+  color: var(--text-body);
+  white-space: pre-line; /* 줄바꿈 유지 */
+  margin-bottom: 40px;
+}
+
+/* 관리자 인라인 편집 텍스트에어리어 (편집 모드 시 노출) */
+.about-bio-edit {
+  display: none;
+  width: 100%;
+  min-height: 220px;
+  padding: 20px;
+  font-family: inherit;
+  font-size: calc(18px * var(--font-scale));
+  line-height: 1.85;
+  color: var(--text-main);
+  background-color: #FFFFFF;
+  border: 2px dashed var(--color-primary);
+  border-radius: var(--radius-md);
+  resize: vertical;
+  margin-bottom: 20px;
+  outline: none;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.about-bio-edit:focus {
+  border-style: solid;
+  border-color: var(--color-primary-hover);
+  box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+/* 관리자 편집 툴바 버튼 그룹 */
+.about-edit-actions {
+  display: none;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+/* 편집 모드 상태 클래스 */
+.about-card.is-editing .about-bio-text {
+  display: none;
+}
+
+.about-card.is-editing .about-bio-edit,
+.about-card.is-editing .about-edit-actions {
+  display: flex;
+}
+
+/* 기술 역량 (Skills) 섹션 */
+.skills-heading {
+  font-size: calc(22px * var(--font-scale));
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: all var(--transition-normal);
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  background-color: #FFFFFF;
+}
+
+.skill-name {
+  font-size: calc(18px * var(--font-scale));
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.skill-desc {
+  font-size: calc(15px * var(--font-scale));
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+/* 반응형 대응 */
+@media (max-width: 768px) {
+  .about-card {
+    padding: 28px 20px;
+  }
+
+  .about-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
