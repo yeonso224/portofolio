@@ -1,0 +1,183 @@
+/**
+ * [메인 히어로 섹션 컴포넌트]
+ * 첫인상을 좌우하는 대형 헤드라인, 정연소 강사 프로필 요약 카드, 주요 바로가기 CTA 버튼
+ */
+
+.hero-section {
+  position: relative;
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-page) 100%);
+  padding-top: 70px;
+  padding-bottom: 90px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+}
+
+/* 좌측 메인 카피 영역 */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 상단 타겟 뱃지 */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 24px;
+}
+
+/* 빔프로젝터에서도 한눈에 들어오는 대형 메인 헤드라인 */
+.hero-title {
+  font-size: calc(44px * var(--font-scale));
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+/* 헤드라인 내 오렌지색 핵심 강조 키워드 */
+.hero-title .highlight {
+  color: var(--color-secondary);
+  position: relative;
+  display: inline-block;
+}
+
+/* 보조 설명 문장 */
+.hero-subtitle {
+  font-size: calc(20px * var(--font-scale));
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 620px;
+}
+
+/* 대형 CTA 액션 버튼 그룹 */
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* 우측 강사 프로필 카드 */
+.hero-profile-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 프로필 카드 상단 장식 오라 */
+.hero-profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent-spike));
+}
+
+/* 강사 프로필 사진 아바타 프레임 */
+.profile-avatar-frame {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.2);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--bg-subtle);
+}
+
+.profile-name {
+  font-size: calc(26px * var(--font-scale));
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.profile-role {
+  font-size: calc(16px * var(--font-scale));
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.profile-summary-text {
+  font-size: calc(16px * var(--font-scale));
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* 프로필 카드 내 주요 기술 태그 */
+.profile-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.profile-pill {
+  background-color: var(--bg-subtle);
+  color: var(--text-body);
+  font-size: calc(14px * var(--font-scale));
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+}
+
+/* 반응형 대응 */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: calc(34px * var(--font-scale));
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+}

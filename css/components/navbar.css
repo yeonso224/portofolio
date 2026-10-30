@@ -1,0 +1,182 @@
+/**
+ * [상단 네비게이션 바 컴포넌트]
+ * 스티키 상단 고정, 로고, 섹션 링크, 시니어 글자 확대/축소 도구, 관리자 수정 진입 버튼
+ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+/* 스크롤 시 그림자 강조 효과 */
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+  height: 70px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* 브랜드 로고 영역 */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: calc(20px * var(--font-scale));
+  font-weight: 700;
+  color: var(--color-primary);
+  user-select: none;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #FFFFFF;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+}
+
+/* 데스크톱 메뉴 링크 목록 */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: calc(17px * var(--font-scale));
+  font-weight: 500;
+  color: var(--text-sub);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  font-weight: 600;
+}
+
+/* 우측 접근성 및 관리자 유틸리티 도구 그룹 */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 시니어 특화 글자 크기 조절기 (가- / 보통 / 가+) */
+.font-scale-group {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+
+.scale-btn {
+  padding: 6px 12px;
+  min-height: 38px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-sub);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+}
+
+.scale-btn:hover {
+  color: var(--color-primary);
+}
+
+.scale-btn.active {
+  background-color: var(--bg-surface);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 관리자 모드 자물쇠 버튼 */
+.admin-lock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 42px;
+  padding: 6px 16px;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-radius: var(--radius-pill);
+  font-size: calc(14px * var(--font-scale));
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25);
+  transition: all var(--transition-fast);
+}
+
+.admin-lock-btn:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* 관리자 모드 활성화 시 표시 스타일 (초록색 뱃지) */
+.admin-lock-btn.unlocked {
+  background-color: var(--color-success);
+}
+
+/* 모바일 햄버거 메뉴 토글 버튼 */
+.mobile-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  background-color: var(--bg-subtle);
+}
+
+/* 모바일 화면 반응형 대응 */
+@media (max-width: 992px) {
+  .navbar-menu {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-surface);
+    flex-direction: column;
+    padding: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-lg);
+    gap: 16px;
+    transform: translateY(-120%);
+    transition: transform var(--transition-normal);
+  }
+
+  .navbar-menu.open {
+    transform: translateY(0);
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+}
